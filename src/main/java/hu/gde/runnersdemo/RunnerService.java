@@ -3,6 +3,8 @@ package hu.gde.runnersdemo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -27,5 +29,10 @@ public class RunnerService {
         } else {
             return -1.0;
         }
+    }
+
+    public RunnerEntity getBiggestShoeSizeRunner() {
+        List<RunnerEntity> runners = runnerRepository.findAll();
+        return Collections.max(runners, Comparator.comparing(runner -> runner.getShoeSize()));
     }
 }
