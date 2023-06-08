@@ -1,5 +1,6 @@
 package hu.gde.runnersdemo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,10 @@ public class RunnerEntity {
     private String runnerName;
     private long pace;
     private int shoeSize;
+
+    @JsonIgnore
+    @ManyToOne
+    private ShoeName shoeName;
 
     @OneToMany(mappedBy = "runner")
     private List<LapTimeEntity> laptimes = new ArrayList<>();
@@ -56,5 +61,15 @@ public class RunnerEntity {
     public void setShoeSize(int shoeSize)
     {
         this.shoeSize = shoeSize;
+    }
+
+    public ShoeName getShoeName()
+    {
+        return shoeName;
+    }
+
+    public void setShoeName(ShoeName shoeName)
+    {
+        this.shoeName = shoeName;
     }
 }
