@@ -15,13 +15,15 @@ public class RunnerRestController {
     private LapTimeRepository lapTimeRepository;
     private RunnerRepository runnerRepository;
     private final RunnerService runnerService;
+    private final ShoeNameRepository shoeNameRepository;
 
     @Autowired
     public RunnerRestController(RunnerRepository runnerRepository, LapTimeRepository lapTimeRepository,
-                                RunnerService runnerService) {
+                                RunnerService runnerService, ShoeNameRepository shoeNameRepository) {
         this.runnerRepository = runnerRepository;
         this.lapTimeRepository = lapTimeRepository;
         this.runnerService = runnerService;
+        this.shoeNameRepository = shoeNameRepository;
     }
 
     @GetMapping("/{id}")
@@ -69,6 +71,29 @@ public class RunnerRestController {
     public ResponseEntity<String> getBiggestShoeSizeRunnerName() {
         return ResponseEntity.ok(runnerService.getBiggestShoeSizeRunner().getRunnerName());
     }
+
+    @PutMapping("/{id}/shoe-name")
+    public ResponseEntity<?> changeShoeName(
+            @PathVariable Long id,
+            @RequestParam(name = "shoeNameId") Long shoeNameId
+    ) {
+        RunnerEntity runner = runnerRepository.findById(id).orElse(null);
+        ShoeName shoeName = shoeNameRepository.findById(shoeNameId).orElse(null);
+        if (runner == null || shoeName == null) {
+            String message;
+            if(runner == null) {
+                message = "Runner with ID " + id + " not found";
+            } else {
+                message = "Shoe-name with ID " + shoeNameId + " not found";
+            }
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
+        } else {
+            runner.setShoeName(shoeName);
+            runnerRepository.save(runner);
+            return ResponseEntity.ok().build();
+        }
+    }
+
 
     public static class LapTimeRequest {
         private int lapTimeSeconds;
