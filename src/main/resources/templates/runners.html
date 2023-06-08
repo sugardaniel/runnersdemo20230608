@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>All Runners</title>
@@ -28,6 +28,10 @@
         </tr>
         </tbody>
     </table>
+    <div class="form-group">
+        <label for="averagePace">Átlagiram:</label>
+        <span id="averagePace" th:text="${averagePace}"></span>
+    </div>
 </div>
 </body>
 </html>
