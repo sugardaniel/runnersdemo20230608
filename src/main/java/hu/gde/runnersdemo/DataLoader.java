@@ -9,19 +9,27 @@ public class DataLoader implements CommandLineRunner {
 
     private final RunnerRepository runnerRepository;
     private final LapTimeRepository lapTimeRepository;
+    private final ShoeNameRepository shoeNameRepository;
 
     @Autowired
-    public DataLoader(RunnerRepository runnerRepository, LapTimeRepository lapTimeRepository) {
+    public DataLoader(RunnerRepository runnerRepository, LapTimeRepository lapTimeRepository,
+                      ShoeNameRepository shoeNameRepository) {
         this.runnerRepository = runnerRepository;
         this.lapTimeRepository = lapTimeRepository;
+        this.shoeNameRepository = shoeNameRepository;
     }
 
     @Override
     public void run(String... args) {
+        ShoeName shoeName = new ShoeName();
+        shoeName.setShoeName("Nike");
+        shoeName = shoeNameRepository.save(shoeName);
+
         RunnerEntity runnerEntity = new RunnerEntity();
         runnerEntity.setRunnerName("Tomi");
         runnerEntity.setPace(110);
         runnerEntity.setShoeSize(43);
+        runnerEntity.setShoeName(shoeName);
         runnerRepository.save(runnerEntity);
 
 
@@ -40,10 +48,15 @@ public class DataLoader implements CommandLineRunner {
         runnerEntity.getLaptimes().add(laptime1);
         runnerEntity.getLaptimes().add(laptime2);
 
+        ShoeName shoeName2 = new ShoeName();
+        shoeName2.setShoeName("Adidas");
+        shoeName2 = shoeNameRepository.save(shoeName2);
+
         RunnerEntity runnerEntity2 = new RunnerEntity();
         runnerEntity2.setRunnerName("Zsuzsi");
         runnerEntity2.setPace(100);
         runnerEntity2.setShoeSize(41);
+        runnerEntity2.setShoeName(shoeName2);
         runnerRepository.save(runnerEntity2);
 
         LapTimeEntity laptime3 = new LapTimeEntity();
@@ -62,10 +75,15 @@ public class DataLoader implements CommandLineRunner {
         runnerEntity2.getLaptimes().add(laptime4);
 
         //3. futó
+        ShoeName shoeName3 = new ShoeName();
+        shoeName3.setShoeName("Puma");
+        shoeName3 = shoeNameRepository.save(shoeName3);
+
         RunnerEntity runnerEntity3 = new RunnerEntity();
         runnerEntity3.setRunnerName("Anna");
         runnerEntity3.setPace(120);
         runnerEntity3.setShoeSize(39);
+        runnerEntity3.setShoeName(shoeName3);
         runnerRepository.save(runnerEntity3);
 
         LapTimeEntity laptime5 = new LapTimeEntity();
