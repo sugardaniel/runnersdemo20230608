@@ -15,7 +15,7 @@ public class ShoeName
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long shoeNameId;
 
-    private String shoeName;
+    private String name;
 
     @OneToMany(mappedBy = "shoeName")
     private List<RunnerEntity> runners;
@@ -30,14 +30,14 @@ public class ShoeName
         this.shoeNameId = shoeNameId;
     }
 
-    public String getShoeName()
+    public String getName()
     {
-        return shoeName;
+        return name;
     }
 
-    public void setShoeName(String shoeName)
+    public void setName(String shoeName)
     {
-        this.shoeName = shoeName;
+        this.name = shoeName;
     }
 
     public List<RunnerEntity> getRunners()

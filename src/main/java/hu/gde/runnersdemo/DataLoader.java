@@ -22,7 +22,7 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) {
         ShoeName shoeName = new ShoeName();
-        shoeName.setShoeName("Nike");
+        shoeName.setName("Nike");
         shoeName = shoeNameRepository.save(shoeName);
 
         RunnerEntity runnerEntity = new RunnerEntity();
@@ -49,7 +49,7 @@ public class DataLoader implements CommandLineRunner {
         runnerEntity.getLaptimes().add(laptime2);
 
         ShoeName shoeName2 = new ShoeName();
-        shoeName2.setShoeName("Adidas");
+        shoeName2.setName("Adidas");
         shoeName2 = shoeNameRepository.save(shoeName2);
 
         RunnerEntity runnerEntity2 = new RunnerEntity();
@@ -76,7 +76,7 @@ public class DataLoader implements CommandLineRunner {
 
         //3. futó
         ShoeName shoeName3 = new ShoeName();
-        shoeName3.setShoeName("Puma");
+        shoeName3.setName("Puma");
         shoeName3 = shoeNameRepository.save(shoeName3);
 
         RunnerEntity runnerEntity3 = new RunnerEntity();
