@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "3280806a-0a27-445f-b66a-efc67205ca2f",
+		"_postman_id": "33692f98-5c31-4724-8107-0c716ca6301a",
 		"name": "Runners demo",
 		"description": "Runners Demo postman collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "9701363"
+		"_exporter_id": "6008482"
 	},
 	"item": [
 		{
@@ -132,6 +132,57 @@
 						"runner",
 						"1",
 						"addlaptime"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getBiggestShoeSizeRunnerName",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/runner/biggest-shoe-size-runner",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"runner",
+						"biggest-shoe-size-runner"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "changeShoeName",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/runner/1/shoe-name?shoeNameId=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"runner",
+						"1",
+						"shoe-name"
+					],
+					"query": [
+						{
+							"key": "shoeNameId",
+							"value": "3"
+						}
 					]
 				}
 			},
